@@ -8,12 +8,24 @@ const ShoeGrid = () => {
   return (
     <Wrapper>
       {SHOES.map((shoe) => (
-        <ShoeCard key={shoe.slug} {...shoe} />
+        <ShoeWrapper key={shoe.slug} >
+          <ShoeCard {...shoe} />
+        </ShoeWrapper>
       ))}
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: -16px;  /* creates gutter for the shoe grid */
+`;
+
+const ShoeWrapper = styled.div`
+  min-width: 275px;
+  margin: 16px; /* creates gutter for the shoe grid using margin collapse*/
+  flex: 1;  /* in combination with min-width allows the cards to grow into the available space*/
+`;
 
 export default ShoeGrid;
